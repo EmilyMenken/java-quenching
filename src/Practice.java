@@ -23,7 +23,7 @@ public class Practice {
         };
         
         return sum;
-    }
+    }//end oddSum
 
     /**
      * Returns the shortest word in the Set.
@@ -37,8 +37,24 @@ public class Practice {
      * @throws NullPointerException if words is null
      */
     public static String shortestWord(Set<String> words) {
-        return null;
-    }
+        if(words == null) throw new NullPointerException("Set is null, and can't be!");
+        if(words.isEmpty()) throw new IllegalArgumentException("Illegal Argument!");
+
+        String shortest = "pneumonoultramicroscopicsilicovolcanoconiosis";
+
+    for(String word : words){
+
+        if(word.length()< shortest.length()){shortest = word;}
+        if(word.length() == shortest.length()){}
+
+    };
+
+
+
+
+        return shortest;
+
+    }//end shortestWord
 
     /**
      * Returns a set of all the names of people that are 18 years of age or older.
