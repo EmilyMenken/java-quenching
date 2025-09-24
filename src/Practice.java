@@ -40,17 +40,13 @@ public class Practice {
         if(words == null) throw new NullPointerException("Set is null, and can't be!");
         if(words.isEmpty()) throw new IllegalArgumentException("Illegal Argument!");
 
-        String shortest = "pneumonoultramicroscopicsilicovolcanoconiosis";
+        String shortest = null;
 
     for(String word : words){
 
-        if(word.length()< shortest.length()){shortest = word;}
-        if(word.length() == shortest.length()){}
-
-    };
-
-
-
+        if(shortest == null || word.length()< shortest.length() || word.length() == shortest.length() && word.compareTo(shortest) <0 ) {shortest = word;}
+            //if shortest is null, or longer than the current word, or equal in length to the current word but lower alphabetically then replace shortest with current word
+    }//end for
 
         return shortest;
 
