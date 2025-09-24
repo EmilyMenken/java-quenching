@@ -83,8 +83,23 @@ public class Practice {
      * @throws IllegalArgumentException if head is null
      */
     public static int biggestNumber(ListNode<Integer> head) {
-        return 0;
-    }
+
+        if (head == null) throw new IllegalArgumentException("Head can't be null! And it is!");
+        int max = head.data; //start with the head
+
+        ListNode<Integer> current = head.next;
+
+        while(current != null){
+
+            if(current.data > max) max = current.data;
+            current = current.next; //looping through
+            //if current is greater than the max make the current the new max
+
+        }//end while
+
+
+        return max;
+    }//end biggest number
 
     /**
      * Returns a frequency map counting how frequently items appear in a linked list.
