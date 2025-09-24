@@ -202,8 +202,38 @@ public class Practice {
      * @return true if the sums are equal, false otherwise
      */
     public static boolean sumMatch(BinaryTreeNode<Integer> root, ListNode<Integer> head) {
-        return false;
-    }
+        
+        int sum = 0;
+        int sum2 = 0;
+        
+        if(root != null){
+
+            Stack<BinaryTreeNode<Integer>> stack = new Stack<>();
+            stack.push(root);
+
+            while(!stack.isEmpty()){
+
+                BinaryTreeNode<Integer> node = stack.pop();
+                sum += node.data;
+                if(node.left !=null) stack.push(node.left);
+                if(node.right !=null) stack.push(node.right);
+
+
+            }//end while
+        }//end if
+        
+        ListNode<Integer> current = head;
+
+        while(current != null){
+
+            sum2 += current.data;
+            current = current.next;
+
+        }//end while2
+        
+        boolean flag = sum == sum2;
+        return flag;
+    }//end sumMatch
 
     /**
      * Returns the sum of all the vertices in a graph that are reachable from a given
