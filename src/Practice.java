@@ -278,6 +278,25 @@ public class Practice {
      * @return the count of vertices with outdegree 0
      */
     public static int sinkCount(Vertex<Integer> start) {
-        return 0;
+
+        if (start == null) return 0;
+
+        Set<Vertex<Integer>> visited = new HashSet<>();
+        Queue<Vertex<Integer>> queue = new LinkedList<>();
+        queue.add(start);
+        visited.add(start);
+
+        int count = 0;
+        while (!queue.isEmpty()) {
+            Vertex<Integer> current = queue.poll();
+            if (current.neighbors.isEmpty()) count++;
+            for (Vertex<Integer> neighbor : current.neighbors) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return count;
     }
 }
