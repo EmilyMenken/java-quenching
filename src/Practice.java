@@ -235,6 +235,7 @@ public class Practice {
         return flag;
     }//end sumMatch
 
+
     /**
      * Returns the sum of all the vertices in a graph that are reachable from a given
      * starting vertex.
@@ -245,8 +246,28 @@ public class Practice {
      * @return the sum of all the vertices
      */
     public static int graphSum(Vertex<Integer> start) {
-        return 0;
-    }
+        
+        if(start == null) return 0;
+        
+        Set<Vertex<Integer>> visited = new HashSet<>();
+        Queue<Vertex<Integer>> queue = new LinkedList<>();
+        
+        queue.add(start);
+        visited.add(start);
+
+        int sum = 0;
+        while (!queue.isEmpty()) {
+            Vertex<Integer> current = queue.poll();
+            sum += current.data;
+            for (Vertex<Integer> neighbor : current.neighbors) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return sum;
+    }//end graphSum
 
     /**
      * Returns the count of vertices in a graph that have an outdegree of 0.
